@@ -18,36 +18,19 @@ const Product = ({ data }: { data: Data }) => {
       <div className=" flex flex-col md:flex-row">
         <div className="w-full mb-10 md:mb-0 md:mr-10 flex md:flex-row ">
           <div className="w-3/12 md:w-2/12 gap-3 mx-auto flex flex-col mr-5 md:mr-10">
-            <Image
-              src={data?.images[0]}
-              width={5000}
-              height={7000}
-              alt="product-image"
-              className={`w-full cursor-pointer border-2 border-red-200`}
-              onClick={(e) => {
-                setImageUrl(e.currentTarget.src);
-              }}
-            />
-            <Image
-              src={data?.images[1]}
-              width={5000}
-              height={7000}
-              alt="product-image"
-              className="w-full cursor-pointer border-2 border-red-200"
-              onClick={(e) => {
-                setImageUrl(e.currentTarget.src);
-              }}
-            />
-            <Image
-              src={data?.images[2]}
-              width={5000}
-              height={7000}
-              alt="product-image"
-              className="w-full cursor-pointer border-2 border-red-200"
-              onClick={(e) => {
-                setImageUrl(e.currentTarget.src);
-              }}
-            />
+            {data?.images?.slice(0, 3).map((item, index) => (
+              <Image
+                src={item}
+                width={5000}
+                height={7000}
+                alt="product-image"
+                className={`w-full cursor-pointer border-2 border-red-200`}
+                onClick={() => {
+                  setImageUrl(item);
+                }}
+                key={index}
+              />
+            ))}
           </div>
           <Image
             src={ImageUrl}

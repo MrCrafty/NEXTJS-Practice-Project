@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Data } from "@/utils/types";
+import { Data } from "@/@types/Data";
 //@ts-ignore
 import ReactStars from "react-rating-stars-component";
 

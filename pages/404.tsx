@@ -9,7 +9,7 @@ const NotFound = () => {
           404
         </h1>
         <p className="text-xl md:text-4xl font-semibold text-transparent font-Poppins bg-gradient-to-r from-red-500 to-cyan-800 bg-clip-text">
-          Oops!!! There's nothing here.
+          Oops!!! There&apos;s nothing here.
         </p>
         <Link
           href={"/products"}

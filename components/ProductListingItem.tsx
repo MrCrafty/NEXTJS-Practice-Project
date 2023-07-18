@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Data } from "@/utils/types";
+import { Data } from "@/@types/Data";
 //@ts-ignore
 import ReactStars from "react-rating-stars-component";
 

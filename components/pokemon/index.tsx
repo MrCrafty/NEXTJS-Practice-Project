@@ -1,4 +1,4 @@
-import PokeCard from "@/components/PokeCard";
+import PokeCard from "@/components/pokemon/PokeCard";
 import React from "react";
 
 /*==============================Defining the type of data==============================*/
