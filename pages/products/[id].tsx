@@ -1,53 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import ProductDetails from "../../components/ProductDetails";
-
-type Data = {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
-};
+import { Data } from "@/@types/Data";
+import { BsArrowLeft } from "react-icons/bs";
+import Link from "next/link";
 
 const Product = ({ data }: { data: Data }) => {
+  const [ImageUrl, setImageUrl] = useState(data?.images[0]);
   return (
-    <div className="bg-slate-950 min-h-screen pt-10 lg:p-10">
-      <div className="container mx-auto flex">
-        <Image
-          src={data?.images[0] ?? "https://www.dummyimage.com/500x700"}
-          width={500}
-          height={700}
-          alt=""
-          className="w-3/12 mr-10"
-        />
+    <div className="min-h-screen container mx-auto lg:pt-10 font-Poppins">
+      <Link
+        href={"/products"}
+        className="mb-10 flex items-center text-xl hover:text-slate-600"
+      >
+        <BsArrowLeft className="mr-1" /> Back
+      </Link>
+      <div className=" flex flex-col md:flex-row">
+        <div className="w-full mb-10 md:mb-0 md:mr-10 flex md:flex-row ">
+          <div className="w-3/12 md:w-2/12 gap-3 mx-auto flex flex-col mr-5 md:mr-10">
+            <Image
+              src={data?.images[0]}
+              width={5000}
+              height={7000}
+              alt="product-image"
+              className={`w-full cursor-pointer border-2 border-red-200`}
+              onClick={(e) => {
+                setImageUrl(e.currentTarget.src);
+              }}
+            />
+            <Image
+              src={data?.images[1]}
+              width={5000}
+              height={7000}
+              alt="product-image"
+              className="w-full cursor-pointer border-2 border-red-200"
+              onClick={(e) => {
+                setImageUrl(e.currentTarget.src);
+              }}
+            />
+            <Image
+              src={data?.images[2]}
+              width={5000}
+              height={7000}
+              alt="product-image"
+              className="w-full cursor-pointer border-2 border-red-200"
+              onClick={(e) => {
+                setImageUrl(e.currentTarget.src);
+              }}
+            />
+          </div>
+          <Image
+            src={ImageUrl}
+            width={5000}
+            height={7000}
+            alt="product-image"
+            className="w-9/12 md:w-10/12 border-2"
+          />
+        </div>
         <ProductDetails data={data} />
+      </div>
+      <div className=" mt-52">
+        <h3 className="text-center text-4xl -mb-2">Description</h3>
+        <div className="border-t-2 border-slate-100 p-5">
+          <p className="text-slate-500 text-center">{data?.description}</p>
+        </div>
       </div>
     </div>
   );
 };
 
 export default Product;
-/*==============================Fetched the data using getServerSideProps==============================*/
-
-// export const getServerSideProps = async ({
-//   params: { id },
-// }: {
-//   params: { id: number };
-// }) => {
-//   const res = await fetch((process.env.API_URL as string) + "/products/" + id);
-//   const data = await res.json();
-//   console.log(data);
-//   return {
-//     props: { data },
-//   };
-// };
 
 /*==============================Fetched the data using getStaticProps==============================*/
 
